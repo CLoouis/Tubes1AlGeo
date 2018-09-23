@@ -1,2 +1,6 @@
 # Tubes1AlGeo
-Tugas Besar 1 Mata Kuliah Aljabar Geometri
+Tugas Besar 1 IF 2123 Aljabar Geometri
+Sistem Persamaan Linear dan Aplikasinya
+2018
+
+Dalam bahasa Java
