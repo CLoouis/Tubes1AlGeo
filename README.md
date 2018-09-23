@@ -5,4 +5,3 @@ Sistem Persamaan Linear dan Aplikasinya
 
 2018
 
-Dalam bahasa Java
