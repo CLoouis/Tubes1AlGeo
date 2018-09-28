@@ -44,9 +44,9 @@ class DriverMatriks {
         } else if (pilihan1 == 2){
             pilihanInput();
             if (pilihan3 == 1){
-                M.bacaMatriks();
-                System.out.println("Isi Matriks : ");
+                M.matriksInterpolasi();
                 M.tulisMatriks();
+                M.solusiInterpolasi();
             }
         } else if (pilihan1 == 3){
             System.out.println("Terima Kasih");

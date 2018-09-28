@@ -33,6 +33,26 @@ public class matriks {
         Kol = keyboard.nextInt();
     }
 
+    void bacaUkuranMatriksInterpolasi(){
+    //Menerima input banyaknya baris dan banyaknya kolom dari suatu matriks
+        System.out.print("Masukan banyaknya baris : ");
+        Brs = keyboard.nextInt();
+        Kol = 2;
+    }
+
+    
+    float pangkat(float x,int i)
+    {
+        int j;
+        float xtemp;
+
+        xtemp = x;
+        for(j=1;j<=i-1;j++)
+        {
+            x = x * xtemp;
+        }
+        return (x);
+    }
     void bacaMatriks(){
     //Membaca ukuran lalu membaca inputan user untuk membentuk sebuah matriks
         int i,j;
@@ -46,6 +66,73 @@ public class matriks {
         }
     }
 
+    void bacaMatriksInterpolasi(){
+        int i,j;
+
+        bacaUkuranMatriksInterpolasi();
+        for (i = 1; i <= Brs; i++){
+            for (j = 1; j <= Kol; j++){
+                this.Mat[i][j] = keyboard.nextFloat();
+            }
+        }
+
+    }
+
+    void matriksInterpolasi()
+    {
+        int i,j;
+        float x,y;
+
+        bacaMatriksInterpolasi();
+        
+        for(i=1;i<=Brs;i++)
+        {
+            x = this.Mat[i][1];
+            y = this.Mat[i][2];
+            this.Mat[i][1] = 1;  
+            for(j=2;j<=Brs;j++)
+            {
+                this.Mat[i][j] = pangkat(x,(j-1));
+            }
+            this.Mat[i][Brs+1] = y;
+        }
+        Kol = Brs+1;
+        GaussJordan();
+    }
+
+    void solusiInterpolasi(){
+        int i,j;
+        float x,sum;
+        
+        System.out.print("Masukkan nilai x = ");
+        x = keyboard.nextFloat();
+        sum = 0;
+        System.out.print("f(x) = ");
+        for(i=1;i<=Brs;i++)
+        {
+            if( (this.Mat[i][i] == 1) & (this.Mat[i][Kol] != 0))
+            {
+                if (i==1)
+                {
+                    sum = sum + this.Mat[i][Kol];
+                    System.out.print(this.Mat[i][Kol] + " + ");  
+                } else if(i==2)
+                {
+                    sum += this.Mat[i][Kol] * x;
+                    System.out.print(this.Mat[i][Kol] + "x + ");
+                } else if (i==Brs)
+                {
+                    sum += this.Mat[i][Kol] * pangkat(x,i-1);
+                    System.out.println(this.Mat[i][Kol] + "x^" + (i-1));
+                } else 
+                {
+                    sum += this.Mat[i][Kol] * pangkat(x,i-1);
+                    System.out.print(this.Mat[i][Kol] + "x^" + (i-1) + " + ");
+                }
+            }
+        }
+        System.out.println("f(" + x + ") = " + sum);
+    }
     void tulisMatriks(){
     //Menampilkan isi matriks ke layar
         int i,j;
