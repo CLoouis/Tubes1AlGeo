@@ -101,33 +101,65 @@ public class matriks {
     }
 
     void solusiInterpolasi(){
-        int i,j;
+        int i,j,k,l;
         float x,sum;
         
         System.out.print("Masukkan nilai x = ");
         x = keyboard.nextFloat();
         sum = 0;
         System.out.print("f(x) = ");
+        k=0;
+        for (i=1;i<=Brs;i++)
+        {
+            if((this.Mat[i][i] == 1) & (this.Mat[i][Kol] != 0))
+            {
+                k++;
+            }
+        }
+        l=0;
         for(i=1;i<=Brs;i++)
         {
             if( (this.Mat[i][i] == 1) & (this.Mat[i][Kol] != 0))
             {
+                l++;
                 if (i==1)
                 {
-                    sum = sum + this.Mat[i][Kol];
-                    System.out.print(this.Mat[i][Kol] + " + ");  
+                   if(k==1)
+                   {
+                    System.out.println(this.Mat[i][Kol]); 
+                   } else // k > 1
+                   {
+                    System.out.print(this.Mat[i][Kol] + " + "); 
+                   }
+                   sum = sum + this.Mat[i][Kol]; 
                 } else if(i==2)
                 {
+                    if (this.Mat[i][Kol] != 1)
+                    {
+                        System.out.print(this.Mat[i][Kol]);
+                    }
+                    if ( (k==1) || (l==k))
+                    {
+                        System.out.println("x");
+                    } else
+                    {
+                        System.out.print("x + ");
+                    }
                     sum += this.Mat[i][Kol] * x;
-                    System.out.print(this.Mat[i][Kol] + "x + ");
-                } else if (i==Brs)
-                {
-                    sum += this.Mat[i][Kol] * pangkat(x,i-1);
-                    System.out.println(this.Mat[i][Kol] + "x^" + (i-1));
                 } else 
                 {
+                    if (this.Mat[i][Kol] != 1)
+                    {
+                        System.out.print(this.Mat[i][Kol]);
+                    }
+                    if ((k==1) || (l==k))
+                    {
+                        System.out.println( "x^" + (i-1));   
+                    } else 
+                    {
+                    System.out.print("x^" + (i-1) + " + ");
+                    }
                     sum += this.Mat[i][Kol] * pangkat(x,i-1);
-                    System.out.print(this.Mat[i][Kol] + "x^" + (i-1) + " + ");
                 }
             }
         }
