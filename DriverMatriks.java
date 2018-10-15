@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 class DriverMatriks {
     static int pilihan1 = 0; //Menu utama
@@ -21,33 +24,78 @@ class DriverMatriks {
                 pilihanInput();
                 if (pilihan3 == 1){ //keyboard
                     M.bacaMatriks();
-                    M.tulisMatriks();
                     M.Gauss();
                     System.out.println();
                     M.tulisMatriks();
+                    System.out.println();
                     M.SolusiGauss();
-
                 }
+				else if (pilihan3 == 2){
+					M.bacaFileExtSPL();
+					M.tulisMatriks();
+                    M.Gauss();
+                    System.out.println();
+                    M.tulisMatriks();
+                    System.out.println();
+                    M.SolusiGauss();
+				}
+					
             } else if (pilihan2 == 2){
                 pilihanInput();
                 if (pilihan3 == 1){
                     M.bacaMatriks();
-                    M.tulisMatriks();
                     M.GaussJordan();
                     System.out.println();
                     M.tulisMatriks();
                     System.out.println();
                     M.SolusiGaussJordan();
                 }
+				else if (pilihan3 == 2){
+					M.bacaFileExtSPL();
+					M.tulisMatriks();
+                    M.GaussJordan();
+                    System.out.println();
+                    M.tulisMatriks();
+                    System.out.println();
+                    M.SolusiGaussJordan();
+				}
             }
 
         } else if (pilihan1 == 2){
-            pilihanInput();
-            if (pilihan3 == 1){
-                M.matriksInterpolasi();
-                M.tulisMatriks();
-                M.solusiInterpolasi();
+            menuSPL();
+            if (pilihan2 == 1)
+            {
+                pilihanInput(); 
+                if (pilihan3 == 1)
+                {
+                    M.matriksInterpolasi();
+                    M.Gauss();
+                    M.tulisMatriks();
+                    M.SolusiInterpolasiGauss();
+                }  else if(pilihan3 == 2)
+                {
+                    M.matriksInterpolasiExt();
+                    M.Gauss();
+                    M.tulisMatriks();
+                    M.SolusiInterpolasiGauss();
+                }
+            } else if (pilihan2 == 2)
+            {
+                pilihanInput();
+                if (pilihan3 == 1){
+                    M.matriksInterpolasi();
+                    M.GaussJordan();
+                    M.tulisMatriks();
+                    M.solusiInterpolasi();
+                }
+			    else if (pilihan3 ==2){
+				    M.matriksInterpolasiExt();
+				    M.GaussJordan();
+                    M.tulisMatriks();
+                    M.solusiInterpolasi();
+			    }
             }
+				
         } else if (pilihan1 == 3){
             System.out.println("Terima Kasih");
         }
