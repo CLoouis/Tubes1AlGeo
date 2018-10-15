@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 public class matriks {
-    int IdxMax = 10;
-    //Atribut
+    int IdxMax = 10; //Ukuran maks dari matriksnyaa
+    
+    //Atribut dari matriks
     int Brs;
     int Kol;
     float[][] Mat = new float[IdxMax][IdxMax];
@@ -159,7 +160,7 @@ public class matriks {
     }
 
     boolean isKolNol(int j, int i){
-    //true bila pada kolom j dimulai dari baris i sampai Brs = 0
+    //true bila pada kolom j dimulai dari baris i sampai i = Brs bernilai 0
         boolean cek;
 
         cek = true;
@@ -179,8 +180,7 @@ public class matriks {
     }
 
     int indeksTakNol(int j, int i){
-    // Mengeluarkan indeks pertama yang tidak bernilai 0 dari matriks pada kolom j
-    // dimulai dari baris ke i
+    // Mengeluarkan indeks pertama (>= i) yang tidak bernilai 0 dari matriks pada kolom j
         int k = i;
         boolean cek = true;
 
@@ -195,7 +195,8 @@ public class matriks {
     }
 
     void buatLeadingPoint(int i, int j){
-    //Membuat M[i][j] leading point bernilai 1 di baris i
+    //Membuat M[i][j] bernilai 1 sehingga menjadi pivot di baris i 
+    //Dengan cara membagi semua baris dengan M[i][j]
         int k;
         float factor;
 
@@ -207,7 +208,7 @@ public class matriks {
 
     void buatKolomNolBawah(int j, int i){
     //Pivot di M[i][j]
-    //Membuat kolom j nol dimulai dari baris ke i + 1
+    //Pada kolom j, semua element di bawah pivot bernilai nol
         int k = i+1;
         int l;
         float factor;
@@ -258,7 +259,7 @@ public class matriks {
     }
 
     boolean isNolSemua(int i){
-    //Mengembalikan true jika dalam baris tersebut 0 semua kecuali kolom augmented
+    //Mengembalikan true jika dalam baris i semua bernilai 0 kecuali pada kolom augmented
         boolean cek = true;
         int k = 1;
 
@@ -306,6 +307,7 @@ public class matriks {
     }
 
     void GaussJordan(){
+    //Membuat matriks M menjadi reduced-row-echelon-form
         int i = Brs;
         int j;
 
@@ -338,6 +340,7 @@ public class matriks {
     }
 
     void SolusiGaussJordan(){
+    //Menampilkan semua solusi dari penyelesaian SPL dengan GaussJordan
         int k = 1;
         int i = Brs;
         int j;
